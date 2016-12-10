@@ -1,6 +1,6 @@
-(defproject com.cemerick/friend "0.2.3"
+(defproject friend/friend "0.2.3"
   :description "Authentication and authorization library for Ring Clojure web apps and services."
-  :url "http://github.com/cemerick/friend"
+  :url "http://github.com/clojusc/friend"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :min-lein-version "2.0.0"
@@ -22,10 +22,10 @@
                  [com.google.inject/guice "2.0"]
                  [net.sourceforge.nekohtml/nekohtml "1.9.10"]
                  [org.apache.httpcomponents/httpclient "4.3.5"]]
-  
+
   :deploy-repositories {"releases" {:url "https://clojars.org/repo/" :creds :gpg}
                         "snapshots" {:url "https://clojars.org/repo/" :creds :gpg}}
-  
+
   :profiles {:dev {:dependencies [[ring-mock "0.1.1"]
                                   [compojure "1.1.5"]
                                   [ring "1.2.0"]

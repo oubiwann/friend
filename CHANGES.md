@@ -1,5 +1,12 @@
 ## [Friend](http://github.com/clojusc/friend) changelog
 
+### `0.2.3-transitional`
+
+* Updated to document the new Clojars group ID
+* Changed URLs to point to new project home
+* Provide developers a zero-risk path (no code changes) to using the project
+  under the new maintainer
+
 ### `0.2.3`
 
 * Deprecated and un-documented friend's "channel security" features. You should

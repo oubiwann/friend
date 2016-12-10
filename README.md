@@ -1,8 +1,15 @@
-# Friend  [![Travis CI status](https://secure.travis-ci.org/clojusc/friend.png)](http://travis-ci.org/#!/clojusc/friend/builds)
+# Friend
 
-An extensible authentication and authorization library for
-[Clojure](http://clojure.org)/[Ring](http://github.com/ring-clojure/ring)
-web applications and services.
+[![Build Status][travis-badge]][travis]
+[![Dependencies Status][deps-badge]][deps]
+[![Clojars Project][clojars-badge]][clojars]
+[![Tag][tag-badge]][tag]
+[![Clojure version][clojure-v]](project.clj)
+
+*Authentication and authorization library for Ring Clojure web apps and services*
+
+[![Project Logo][logo]][logo-large]
+
 
 ```
 Picking up his staff he stood before the rock and said in a clear voice:
@@ -27,6 +34,8 @@ suspicious days. Those were happier times. Now let us go!"
 
 ## Overview
 
+An extensible authentication and authorization library for
+[Clojure][clojusc]/[Ring][ring] web applications and services.
 Friend is intended to provide a foundation for addressing
 all of the authentication and authorization concerns associated with web
 apps:
@@ -459,5 +468,20 @@ Distributed under the Eclipse Public License, the same as Clojure.
 Please see the `epl-v10.html` file at the top level of this repo.
 
 
+<!-- Named page links below: /-->
+
+[travis]: https://travis-ci.org/clojusc/friend
+[travis-badge]: https://travis-ci.org/clojusc/friend.png?branch=master
+[deps]: http://jarkeeper.com/clojusc/friend
+[deps-badge]: http://jarkeeper.com/clojusc/friend/status.svg
+[logo]: resources/images/mellon-logo-x250.png
+[logo-large]: resources/images/mellon-logo-x1000.png
+[tag-badge]: https://img.shields.io/github/tag/clojusc/friend.svg
+[tag]: https://github.com/clojusc/friend/tags
+[clojure-v]: https://img.shields.io/badge/clojure-1.5.0+-blue.svg
+[clojars]: https://clojars.org/clojusc/friend
+
+[clojure]: http://clojure.org
+[ring]: http://github.com/ring-clojure/ring
 [friend github]: http://github.com/clojusc/friend
 [new ticket]: https://github.com/clojusc/friend/issues/new

@@ -1,4 +1,4 @@
-# Friend  [![Travis CI status](https://secure.travis-ci.org/cemerick/friend.png)](http://travis-ci.org/#!/cemerick/friend/builds)
+# Friend  [![Travis CI status](https://secure.travis-ci.org/clojusc/friend.png)](http://travis-ci.org/#!/clojusc/friend/builds)
 
 An extensible authentication and authorization library for
 [Clojure](http://clojure.org)/[Ring](http://github.com/ring-clojure/ring)
@@ -85,7 +85,7 @@ Note: while actively maintained, [Friend is in search of a new maintainer](https
 
 ### Changelog
 
-Available [here](http://github.com/cemerick/friend/blob/master/CHANGES.md).
+Available [here](http://github.com/clojusc/friend/blob/master/CHANGES.md).
 
 ### Known issues
 
@@ -228,7 +228,7 @@ regular Ring handler function, except that a workflow function can _opt_
 to return an _authentication map_ instead of a Ring response if a
 request is authenticated.  A diagram may help:
 
-![](https://github.com/cemerick/friend/raw/master/docs/workflow.png)
+![](https://github.com/clojusc/friend/raw/master/docs/workflow.png)
 
 You can define any number of workflows in a `:workflows` kwarg to
 `authenticate`.  Incoming requests are always run through the configured
@@ -412,7 +412,7 @@ upstream jetty_upstream {
 server {
   listen 443 ssl;
   #...SSL termination config, &c.
-  
+
   location / {
     proxy_set_header host              $host;
     proxy_set_header x-forwarded-for   $remote_addr;
@@ -448,13 +448,16 @@ server {
 
 ## Need Help?
 
-Ping `cemerick` on freenode irc or
-[twitter](http://twitter.com/cemerick) if you have questions or would
-like to contribute patches.
+Create a [new ticket][new ticket] in the [Github project][friend github] and
+tag it with the "question" label!
 
 ## License
 
-Copyright ©2012-2013 [Chas Emerick](http://cemerick.com) and other contributors.
+Copyright © 2012-2016 [Chas Emerick](http://cemerick.com) and other contributors.
 
 Distributed under the Eclipse Public License, the same as Clojure.
 Please see the `epl-v10.html` file at the top level of this repo.
+
+
+[friend github]: http://github.com/clojusc/friend
+[new ticket]: https://github.com/clojusc/friend/issues/new

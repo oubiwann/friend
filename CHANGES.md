@@ -1,4 +1,4 @@
-## [Friend](http://github.com/cemerick/friend) changelog
+## [Friend](http://github.com/clojusc/friend) changelog
 
 ### `0.2.3`
 
@@ -16,10 +16,10 @@ spec?) to interop with existing SSO systems (gh-114, gh-44)
 * `robert-hooke` is now properly classified as a test dependency (gh-106)
 
 There are other changes, please see the [full list of issues resolved leading up
-to this release](https://github.com/cemerick/friend/issues?q=milestone%3A0.2.2+is%3Aclosed),
+to this release](https://github.com/clojusc/friend/issues?q=milestone%3A0.2.2+is%3Aclosed),
 and the commit history if you're super-interested.
 
-### [`0.2.1`](https://github.com/cemerick/friend/issues?milestone=7&page=1&state=closed)
+### [`0.2.1`](https://github.com/clojusc/friend/issues?milestone=7&page=1&state=closed)
 
 * Added `:cemerick.friend/ensure-session` as an optional slot workflows can add
   to the metadata on authentication maps they return. By default, Friend will
@@ -46,7 +46,7 @@ Friend now requires Clojure 1.3.0+.
 This release contains a significant refactoring of the library to follow the
 interceptor pattern adopted by Ring 1.2.0 (see the note under "Misc" below).
 Note that this refactoring is _not_ a breaking change, either from an end-user
-or workflow author/maintainer standpoint.  
+or workflow author/maintainer standpoint.
 
 **Core API**
 
@@ -91,7 +91,7 @@ Friend is now tracking Ring v1.2.0 betas, minimally requiring
 
 **Core API**
 
-* Fixed handling of the optional authorization-error map that may be provided 
+* Fixed handling of the optional authorization-error map that may be provided
   to `authorize` (gh-46)
 
 **Misc**
@@ -134,7 +134,7 @@ workflow/authentication process
   `Location` header per the HTTP spec (gh-42)
 * The transitive dependency on Google Guice (needed by the openid4java
   dependency) has been updated to use the coordinates available via Maven
-Central 
+Central
 
 ### `0.1.2`
 

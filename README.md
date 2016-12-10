@@ -11,6 +11,32 @@
 [![Project Logo][logo]][logo-large]
 
 
+#### Contents
+
+* [Introduction](#introduction-)
+  * [Overview](#overview-)
+  * [Motivation](#motivation-)
+  * [Sources of Inspiration](#sources-of-inspriation-)
+* [Status](#status-)
+  * [Changelog](#changelog-)
+  * [Known Issues](#known-issues-)
+  * [TODO](#todo-)
+* [Installation](#installation-)
+* [Usage](#usage-)
+  * [Demo](#demo-)
+  * [Authentication](#authentication-)
+  * [Workflows](#workflows-)
+  * [Credential Functions & Authentication Maps](#credential-functions-authentication-maps-)
+  * [Authorization](#authorization-)
+  * [Hierarchical Roles](#hierarchical-roles-)
+* [Deployment](#deployment-)
+  * [NGINX Configuration](#nginx-configuration-)
+* [Need Help?](#need-help-)
+* [License](#license-)
+
+
+## Introduction [&#x219F;](#contents)
+
 > Picking up his staff he stood before the rock and said in a clear
 > voice: '*Mellon*!'
 >
@@ -31,11 +57,12 @@
 
 — J.R.R. Tolkien, _Lord of the Rings_
 
-## Overview
 
-An extensible authentication and authorization library for
-[Clojure][clojusc]/[Ring][ring] web applications and services.
-Friend is intended to provide a foundation for addressing
+### Overview [&#x219F;](#contents)
+
+`friend` is an extensible authentication and authorization library for
+[Clojure][clojure]/[Ring][ring] web applications and services.
+`friend` is intended to provide a foundation for addressing
 all of the authentication and authorization concerns associated with web
 apps:
 
@@ -67,17 +94,22 @@ apps:
     or context is ever bashed in place, making it easier to reason about
     what's going on.
 
-### Why?
 
-Nothing like Friend exists, and it needs to.  Securing Ring applications
-and services is (charitably speaking) a PITA right now, with everyone
+### Motivation [&#x219F;](#contents)
+
+When initially created, nothing like `friend` existed for the Clojure
+ommunity, and it needed to.  Securing Ring applications
+and services was (charitably speaking) a PITA, wwhere everyone was
 rolling their own, or starting with relatively low-level middlewares and
-frameworks.  This will never do.  Serious web applications need to take
+frameworks. This situation was untenable. Serious web applications need to take
 security seriously, and need to readily interoperate with all sorts of
 authentication mechanisms that have come to litter the web as well as
 internal networks.
 
-Friend has been built with one eye on a number of frameworks.
+
+### Sources of Inspiration [&#x219F;](#contents)
+
+`friend` has been built with one eye on a number of frameworks, primarily:
 
 * [warden](https://github.com/hassox/warden/wiki)
 * [spring-security](http://static.springsource.org/spring-security/)
@@ -85,17 +117,22 @@ Friend has been built with one eye on a number of frameworks.
 * [omniauth](https://github.com/intridea/omniauth)
 * sandbar (defunct)
 
-### Status
 
-Very stable, widely-used in production AFAIK.
+## Status [&#x219F;](#contents)
 
-Note: while actively maintained, [Friend is in search of a new maintainer](https://groups.google.com/forum/#!topic/clojure-sec/ceMhYPR0G60).
+`friend` is very stable, widely-used in many production deployments.
 
-### Changelog
+`friend` has recently transitioned to a [new maintainer][clojusc], though with
+continued oversight, advising, and contribution from its creator,
+[Chas Emerick][chas].
 
-Available [here](http://github.com/clojusc/friend/blob/master/CHANGES.md).
 
-### Known issues
+### Changelog [&#x219F;](#contents)
+
+Available [here][changelog].
+
+
+### Known Issues [&#x219F;](#contents)
 
 * This README is _way_ too long and not well-organized.  It's more of a
   brain-dump than anything else at the moment.
@@ -109,7 +146,31 @@ transitive dependencies.  (The form and HTTP Basic workflows are
 dependency-free, and will likely remain here.)
 * …surely there's more.  File issues.
 
-## "Installation"
+
+## TODO [&#x219F;](#contents)
+
+* run-as/sudo/multi-user login
+* alternative hashing methods and salting strategies
+  * good to encourage bcrypt, but existing apps have tons of sha-X, md5,
+    etc passwords
+* remember-me?
+* fine-grained authorization (viz. ACLs, etc)
+  * maybe something compelling can fall out of existing treatment of
+    roles?
+* interop
+  * recognize / provide access to servlet principal
+  * spring-security
+* make `:cemerick.friend/workflow` metadata
+* documentation
+  * authentication retention
+  * authentication map metadata:
+    * `:type`
+    * `::friend/workflow`
+    * `::friend/redirect-on-auth?`
+    * `::friend/ensure-session`
+
+
+## Installation [&#x219F;](#contents)
 
 Friend is available in Clojars. Add this `:dependency` to your Leiningen
 `project.clj`:
@@ -135,7 +196,8 @@ Or, add this to your Maven project's `pom.xml`:
 
 Friend is compatible with Clojure 1.2.0 - 1.5.0+.
 
-## Usage
+
+## Usage [&#x219F;](#contents)
 
 How you use Friend will vary, sometimes significantly, depending on the
 authentication providers you use and the authorization policy/ies you want to
@@ -143,7 +205,12 @@ enforce.  A generic example of typical usage of Friend is below, but the best
 way to become familiar with Friend and how it can be used would be to go check
 out
 
-### [_http://friend-demo.herokuapp.com_](http://friend-demo.herokuapp.com)
+
+### Demo [&#x219F;](#contents)
+
+Location:
+
+* [_http://friend-demo.herokuapp.com_](http://friend-demo.herokuapp.com)
 
 …a collection of tiny demonstration apps using Friend.  It should be easy to
 find the one(s) that apply to your situation, and go straight to its source so
@@ -153,7 +220,7 @@ you can see how all the pieces fit together.
 
 Here's probably the most self-contained Friend usage possible:
 
-```clojure
+```clj
 (ns your.ring.app
   (:require [cemerick.friend :as friend]
             (cemerick.friend [workflows :as workflows]
@@ -190,7 +257,8 @@ the requests to which are subject to the configuration provided to
 two colons [e.g. `::admin`].  These are auto-namespaced keywords; in the example
 above, `::admin` expands to `:your.ring.app/admin`.)
 
-### Authentication
+
+### Authentication [&#x219F;](#contents)
 
 There are two key abstractions employed during authentication:
 [workflow](#workflows)
@@ -228,7 +296,8 @@ previously-unauthorized resources, retention of tokens and nonces for
 workflows like OpenId and oAuth, etc.  HTTP Basic is the only provided
 workflow that does not require `session` middleware.)
 
-### Workflows
+
+### Workflows [&#x219F;](#contents)
 
 Individual authentication methods (e.g., form-based auth, HTTP Basic, OpenID,
 oAuth, etc.) are implemented as _workflows_ in Friend.  A workflow is a
@@ -262,7 +331,8 @@ exchange in the case of oAuth, etc., eventually returning a complete
 authentication map that will allow the user agent to proceed on its
 desired vector).
 
-### Credential functions and authentication maps
+
+### Credential Functions & Authentication Maps [&#x219F;](#contents)
 
 Workflows use a _credential function_ to verify the credentials provided
 to them via requests.  Credential functions can be specified either as a
@@ -311,7 +381,8 @@ which the user is authorized, or a function returning the same.
 _If a map of credentials is found to be invalid, the credential function must
 return nil._
 
-### Authorization
+
+### Authorization [&#x219F;](#contents)
 
 As is, the example above doesn't do a lot: users can opt to be
 authenticated, but we've not described any kind of security policy,
@@ -389,7 +460,10 @@ Note that, so far, all of the authorization checks will be completely
 requires the `::user` role.  This is where hierarchies are unreasonably
 helpful.
 
-#### Hierarchical roles (/ht `derive`, `isa?`, et al.)
+
+### Hierarchical Roles [&#x219F;](#contents)
+
+(/ht `derive`, `isa?`, et al.)
 
 The foundational `authorized?` predicate uses `isa?` to check if any of
 the current user's roles match one of those specified.  This means that
@@ -398,16 +472,21 @@ establish relationships between roles.  e.g., this is all that is
 required to give a user with the `::admin` role all of the privileges of
 a user with the `::user` role:
 
-```clojure
+```clj
 (derive ::admin ::user)
 ```
 
 Of course, you are free to construct your role hierarchy(ies) however
 you like, to suit your application and your security requirements.
 
-### Nginx configuration
 
-If you are using Nginx to, e.g, terminate SSL, set the appropriate headers so that the Clojure backend can generate the correct `return-to` URLs for the openid and similar workflows:
+## Deployment [&#x219F;](#contents)
+
+### NGINX Configuration [&#x219F;](#contents)
+
+If you are using Nginx to, e.g, terminate SSL, set the appropriate headers
+so that the Clojure backend can generate the correct `return-to` URLs for the
+openid and similar workflows:
 
 
 ```nginx
@@ -432,34 +511,14 @@ server {
 }
 ```
 
-## TODO
 
-* run-as/sudo/multi-user login
-* alternative hashing methods and salting strategies
-  * good to encourage bcrypt, but existing apps have tons of sha-X, md5,
-    etc passwords
-* remember-me?
-* fine-grained authorization (viz. ACLs, etc)
-  * maybe something compelling can fall out of existing treatment of
-    roles?
-* interop
-  * recognize / provide access to servlet principal
-  * spring-security
-* make `:cemerick.friend/workflow` metadata
-* documentation
-  * authentication retention
-  * authentication map metadata:
-    * `:type`
-    * `::friend/workflow`
-    * `::friend/redirect-on-auth?`
-    * `::friend/ensure-session`
-
-## Need Help?
+## Need Help? [&#x219F;](#contents)
 
 Create a [new ticket][new ticket] in the [Github project][friend github] and
 tag it with the "question" label!
 
-## License
+
+## License [&#x219F;](#contents)
 
 Copyright © 2012-2016 [Chas Emerick](http://cemerick.com) and other contributors.
 
@@ -482,5 +541,8 @@ Please see the `epl-v10.html` file at the top level of this repo.
 
 [clojure]: http://clojure.org
 [ring]: http://github.com/ring-clojure/ring
+[chas]: https://github.com/cemerick
+[clojusc]: http:/github.com/clojusc/
 [friend github]: http://github.com/clojusc/friend
 [new ticket]: https://github.com/clojusc/friend/issues/new
+[changelog]: http://github.com/clojusc/friend/blob/master/CHANGES.md

@@ -1,5 +1,12 @@
 ## [Friend](http://github.com/clojusc/friend) changelog
 
+### `0.2.4`
+
+* Updated to latest stable releases of dependencies (note that beta
+  dependencies are not being used in this release, in particular, `ring`
+  1.6.0-beta; the next release of `friend` will use the latest `ring`, even if
+  it's still in beta)
+
 ### `0.2.3-transitional`
 
 * Updated to document the new Clojars group ID

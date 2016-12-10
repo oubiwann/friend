@@ -11,25 +11,24 @@
 [![Project Logo][logo]][logo-large]
 
 
-```
-Picking up his staff he stood before the rock and said in a clear voice:
-Mellon!
+> Picking up his staff he stood before the rock and said in a clear
+> voice: '*Mellon*!'
+>
+> The star shone out briefly and faded again. Then silently a great
+> doorway was outlined, though not a crack or joint had been visible
+> before. Slowly it divided in the middle and swung outwards inch by inch,
+> until both doors lay back against the wall. Through the opening a
+> shadowy stair could be seen climbing steeply up; but beyond the lower
+> steps the darkness was deeper than the night. The Company stared in
+> wonder.
+>
+> 'I was wrong after all,' said Gandalf, 'and Gimli too. Merry, of all
+> people, was on the right track. The opening word was inscribed on the
+> archway all the time! The translation should have been: Say *Friend* and
+> enter. I had only to speak the Elvish word for friend and the doors
+> opened. Quite simple. Too simple for a learned lore master in these
+> suspicious days. Those were happier times. Now let us go!'
 
-The star shone out briefly and faded again. Then silently a great
-doorway was outlined, though not a crack or joint had been visible
-before. Slowly it divided in the middle and swung outwards inch by inch,
-until both doors lay back against the wall. Through the opening a
-shadowy stair could be seen climbing steeply up; but beyond the lower
-steps the darkness was deeper than the night. The Company stared in
-wonder.
-
-"I was wrong after all," said Gandalf, "and Gimli too. Merry, of all
-people, was on the right track. The opening word was inscribed on the
-archway all the time! The translation should have been: Say 'Friend' and
-enter. I had only to speak the Elvish word for friend and the doors
-opened. Quite simple. Too simple for a learned lore master in these
-suspicious days. Those were happier times. Now let us go!"
-```
 — J.R.R. Tolkien, _Lord of the Rings_
 
 ## Overview

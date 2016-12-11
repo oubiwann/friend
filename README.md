@@ -37,6 +37,8 @@
 
 ## Introduction [&#x219F;](#contents)
 
+[![Storytime!][gates of moria]][gates of moria source]
+
 > Picking up his staff he stood before the rock and said in a clear
 > voice: '*Mellon*!'
 >
@@ -546,3 +548,6 @@ Please see the `epl-v10.html` file at the top level of this repo.
 [friend github]: http://github.com/clojusc/friend
 [new ticket]: https://github.com/clojusc/friend/issues/new
 [changelog]: http://github.com/clojusc/friend/blob/master/CHANGES.md
+
+[gates of moria]: resources/images/gates_of_moria_by_themico-d5p0ct0-crop.jpg
+[gates of moria source]: http://themico.deviantart.com/art/Gates-of-Moria-344337876

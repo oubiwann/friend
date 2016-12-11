@@ -4,8 +4,8 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :min-lein-version "2.7.1"
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [ring/ring-core "1.5.0"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [ring/ring-core "1.6.0-beta6"]
                  [slingshot "0.12.2"]
 
                  [org.mindrot/jbcrypt "0.3m"]
@@ -18,19 +18,22 @@
                  [org.openid4java/openid4java-nodeps "0.9.6"
                   ; the openid4java artifact refers to a now-disappeared guice repo that
                   ; was previously hosted via google code svn :X
-                  :exclusions [com.google.code.guice/guice]]
+                  :exclusions [com.google.code.guice/guice
+                               commons-logging]]
                  [com.google.inject/guice "3.0"]
                  [net.sourceforge.nekohtml/nekohtml "1.9.22"]
-                 [org.apache.httpcomponents/httpclient "4.5.2"]]
+                 [clj-http "3.4.1"]]
 
   :deploy-repositories {"releases" {:url "https://clojars.org/repo/" :creds :gpg}
                         "snapshots" {:url "https://clojars.org/repo/" :creds :gpg}}
 
-  :profiles {:dev {:dependencies [[ring-mock "0.1.5"]
-                                  [compojure "1.5.1"]
-                                  [ring "1.5.0"]
+  :profiles {:dev {:dependencies [[ring/ring-mock "0.3.0"]
+                                  [compojure "1.6.0-beta2"]
+                                  [ring "1.6.0-beta6"]
                                   [robert/hooke "1.3.0"]
-                                  [clj-http "3.4.1"]]}
+                                  [cheshire "5.6.3"]
+                                  [medley "0.8.4"]
+                                  [ring/ring-jetty-adapter "1.6.0-beta6"]]}
              :sanity-check {:aot :all
                             :warn-on-reflection true
                             :compile-path "target/sanity-check-aot"}
